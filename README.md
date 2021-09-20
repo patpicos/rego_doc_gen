@@ -7,4 +7,10 @@ make install
 
 # Generate documentation
 make doc
+
+# Generate Constraint/ConstraintTemplates
+make build
+
+# Validate / Lint
+make validate
 ```
