@@ -1,0 +1,29 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  creationTimestamp: null
+  name: policytwo
+spec:
+  crd:
+    spec:
+      names:
+        kind: PolicyTwo
+      validation:
+        openAPIV3Schema:
+          properties:
+            dummy:
+              items:
+                type: string
+              type: array
+  targets:
+  - rego: |-
+      package patpicos.opa.PolicyTwo
+
+      violation[{"msg": msg}] {
+        # Always raise a violation
+        1 == 0
+
+        msg := "This policy will never raise an exception"
+      }
+    target: admission.k8s.gatekeeper.sh
+status: {}

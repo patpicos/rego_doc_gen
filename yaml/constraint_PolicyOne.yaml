@@ -1,0 +1,13 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: PolicyOne
+metadata:
+  name: policyone
+spec:
+  match:
+    kinds:
+    - apiGroups:
+      - ""
+      kinds:
+      - pods
+      - statefulsets
+      - deployments

@@ -1,0 +1,22 @@
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+  creationTimestamp: null
+  name: policyone
+spec:
+  crd:
+    spec:
+      names:
+        kind: PolicyOne
+  targets:
+  - rego: |-
+      package patpicos.opa.PolicyOne
+
+      violation[{"msg": msg}] {
+        # Always raise a violation
+        1 == 1
+
+        msg := "This policy will always raise an exception"
+      }
+    target: admission.k8s.gatekeeper.sh
+status: {}
